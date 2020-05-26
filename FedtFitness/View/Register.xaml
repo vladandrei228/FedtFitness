@@ -68,7 +68,7 @@
                     FontWeight="Bold"
                     TextAlignment="Center"
                     
-                    Margin="0,0,30,0"/>
+                    Margin="0,0,40,0"/>
                 <PasswordBox
                     PlaceholderText="Insert a Password.."
                     FontSize="25"
@@ -83,14 +83,15 @@
                     Foreground="Black"
                     FontWeight="Bold"
                     TextAlignment="Center"
-                    Margin="0,0,30,0"/>
+                    Margin="0,0,85,0"/>
                 <TextBox
                     PlaceholderText="Insert an e-mail.."
                     FontSize="25"
                     Text="{Binding Email, Mode=TwoWay}"
                     />
             </StackPanel>
-            <StackPanel HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Center">
                 <Button Name="register" 
                     Content="Register" 
                     Style="{StaticResource ButtonStyle}"
