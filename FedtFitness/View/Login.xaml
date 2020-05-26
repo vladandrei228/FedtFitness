@@ -7,29 +7,72 @@
     xmlns:viewModel="using:FedtFitness.ViewModel"
     xmlns:Custom="using:Microsoft.Xaml.Interactivity" xmlns:Custom1="using:Microsoft.Xaml.Interactions.Core"
     x:Class="FedtFitness.View.Login"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
     <Page.DataContext>
         <viewModel:RALVM/>
     </Page.DataContext>
-    <Grid Background="BurlyWood">
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock HorizontalAlignment="Center" Text="Login" FontSize="50" Foreground="Brown" FontWeight="ExtraBold"/>
+
+
+    <Page.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
+            <Setter Property="BorderBrush" Value="#2e294e"/>
+            <Setter Property="BorderThickness" Value="0.8"/>
+        </Style>
+    </Page.Resources>
+
+
+
+
+    <Grid >
+
+        <Grid.Background>
+        <ImageBrush ImageSource="../Assets/workout.jpg" 
+                    Stretch="UniformToFill" 
+                    Opacity="0.6"/>
+    </Grid.Background>
+
+        <StackPanel Orientation="Vertical" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center" 
+                       Text="Login" FontSize="50" 
+                       Foreground="Brown" 
+                       FontWeight="ExtraBold"/>
             <TextBlock Name="Message" FontSize="30"/>
-                <StackPanel Orientation="Horizontal" Margin="0,20,0,15">
-                <TextBlock Text="Username" FontSize="30" FontWeight="Bold" Foreground="DarkCyan"/>
-                <TextBox Name="Usernamebox"  PlaceholderText="Insert your username"  FontSize="25" 
+                <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Username" 
+                           FontSize="30" 
+                           FontWeight="Bold" 
+                           Foreground="Black"
+                           Margin="0,0,30,0"/>
+                <TextBox Name="Usernamebox"  
+                         PlaceholderText="Insert your username"  
+                         FontSize="25" 
                          Text="{Binding Path=Username, Mode=TwoWay}"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                <TextBlock Text="Password" FontSize="30" FontWeight="Bold" Foreground="DarkMagenta"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Password" 
+                           FontSize="30" 
+                           FontWeight="Bold" 
+                           Foreground="Black"
+                           Margin="0,0,40,0"/>
                 <PasswordBox Name="PasswordBox"
-                    PlaceholderText="Insert your password" FontSize="25" 
+                    PlaceholderText="Insert your password" 
+                    FontSize="25" 
                              Password="{Binding Password, Mode=TwoWay}"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Button Content="Login" FontSize="27" Margin="0,0,20,0" Click="Loginbutton" Command="{Binding LoginCommand}"/>
-                <Button Content="Register" FontSize="27" Margin="20,0,0,0" Click="Registerbutton"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Style="{StaticResource ButtonStyle}"
+                        Content="Login" 
+                        Click="Loginbutton" 
+                        Command="{Binding LoginCommand}"/>
+                <Button Style="{StaticResource ButtonStyle}"
+                        Content="Register" 
+                        Click="Registerbutton"/>
             </StackPanel>
 
 

@@ -8,20 +8,60 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Background="AntiqueWhite">
 
 
-        <Image Source="../Assets/fedtlogo.png" Opacity="0.5"/>
+    <Page.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
+            <Setter Property="BorderBrush" Value="#2e294e"/>
+            <Setter Property="BorderThickness" Value="0.8"/>
+        </Style>
+        </Page.Resources>
 
-        <Button Content="Register" 
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"
+
+            <Grid Background="AliceBlue">
+
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="1"
+            Grid.Row="1">
+        <Image Source="../Assets/fedtlogo.png" 
+               Height="450"
+               HorizontalAlignment="Stretch"
+               VerticalAlignment="Stretch"
+               Opacity="0.8"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Grid.Row="2"
+                    Grid.Column="1">
+        <Button Style="{StaticResource ButtonStyle}"
+                Content="Register" 
+                Background="#B8C5D6"
                 Click="Register_Click" />
 
-        <Button Content="Login" 
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
+            <Button Style="{StaticResource ButtonStyle}"
+                Content="Login" 
+                Background="#B8C5D6"
                 Click="Login_Click" />
 
+        </StackPanel>
     </Grid>
 </Page>

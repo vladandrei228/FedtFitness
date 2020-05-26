@@ -8,7 +8,7 @@
     mc:Ignorable="d">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="../Assets/test.jpg" 
+            <ImageBrush ImageSource="../Assets/workout.jpg" 
                         Stretch="UniformToFill" 
                         Opacity="0.6"/>
         </Grid.Background>

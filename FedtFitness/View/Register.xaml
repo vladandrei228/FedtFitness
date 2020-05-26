@@ -7,74 +7,98 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:fedtFitness="using:FedtFitness"
     xmlns:viewModel="using:FedtFitness.ViewModel"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
     <Page.DataContext>
         <viewModel:RALVM/>
     </Page.DataContext>
-        <Grid Background="BlueViolet">
-        <StackPanel Orientation="Vertical">
-            <StackPanel Width="500" Height="100">
+
+
+    <Page.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
+            <Setter Property="BorderBrush" Value="#2e294e"/>
+            <Setter Property="BorderThickness" Value="0.8"/>
+        </Style>
+    </Page.Resources>
+
+
+
+    <Grid>
+        <Grid.Background>
+        <ImageBrush ImageSource="../Assets/workout.jpg" 
+                    Stretch="UniformToFill" 
+                    Opacity="0.6"/>
+    </Grid.Background>
+    <StackPanel Orientation="Vertical"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+            <StackPanel Width="500" 
+                        Height="100">
                 <TextBlock
-                   Text="Register" 
-                   FontSize="50" 
-                   FontWeight="ExtraBold"
-                   TextAlignment="Center"
-                   Foreground="Aqua"
-                />
+                    HorizontalAlignment="Center" 
+                    Text="Register" FontSize="50" 
+                    Foreground="Brown" 
+                    FontWeight="ExtraBold"/>
+                
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Left">
                 <TextBlock
                     Text="Username"
                     FontSize="30"
-                    Foreground="YellowGreen"
+                    Foreground="Black"
+                    Margin="0,0,30,0"
                     FontWeight="Bold"
-                    TextAlignment="Center"
-                    Margin="0,0,40,0 "/>
+                    TextAlignment="Center"/>
                 <TextBox
                     PlaceholderText="Insert an username."
                     FontSize="25"
                     Text="{Binding Username, Mode=TwoWay}"
                     />
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Left">
                 <TextBlock
                     Text="Password"
                     FontSize="30"
-                    Foreground="YellowGreen"
+                    Foreground="Black"
                     FontWeight="Bold"
                     TextAlignment="Center"
-                    Margin="0,0,40,0 "/>
+                    
+                    Margin="0,0,30,0"/>
                 <PasswordBox
                     PlaceholderText="Insert a Password.."
                     FontSize="25"
                     Password="{Binding Password, Mode=TwoWay}"
                 />
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Left">
                 <TextBlock
                     Text="E-mail"
                     FontSize="30"
-                    Foreground="YellowGreen"
+                    Foreground="Black"
                     FontWeight="Bold"
                     TextAlignment="Center"
-                    Margin="-20,0,80,0 "/>
+                    Margin="0,0,30,0"/>
                 <TextBox
                     PlaceholderText="Insert an e-mail.."
                     FontSize="25"
                     Text="{Binding Email, Mode=TwoWay}"
-                />
+                    />
             </StackPanel>
-            <Button Name="register" 
+            <StackPanel HorizontalAlignment="Center">
+                <Button Name="register" 
                     Content="Register" 
-                    FontSize="35" 
-                    HorizontalAlignment="Center"
+                    Style="{StaticResource ButtonStyle}"
                     Command="{Binding AddUserCommand}"/>
             <Button Content="Login" 
-                    FontSize="35"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
+                    Style="{StaticResource ButtonStyle}"
                     Click="Login_Click" />
+            </StackPanel>
         </StackPanel>
 
 

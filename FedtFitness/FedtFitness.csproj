@@ -141,9 +141,6 @@
     <Compile Include="View\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Model\Equipment.cs" />
     <Compile Include="Model\EquipmentCatalogSingleton.cs" />
     <Compile Include="Model\Exercise.cs" />
@@ -169,6 +166,7 @@
   <ItemGroup>
     <Content Include="Assets\fedtlogo.png" />
     <Content Include="Assets\test.jpg" />
+    <Content Include="Assets\workout.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -198,10 +196,6 @@
     <Page Include="View\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Training.xaml">
       <SubType>Designer</SubType>

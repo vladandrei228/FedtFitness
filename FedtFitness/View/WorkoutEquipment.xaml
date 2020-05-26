@@ -42,7 +42,7 @@
     <Grid x:Name="Grid1">
 
         <Grid.Background>
-            <ImageBrush ImageSource="../Assets/test.jpg" 
+            <ImageBrush ImageSource="../Assets/workout.jpg" 
                         Stretch="UniformToFill" 
                         Opacity="0.6"/>
         </Grid.Background>
