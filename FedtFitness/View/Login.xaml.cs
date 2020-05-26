@@ -38,7 +38,7 @@ namespace FedtFitness.View
             {
                // Content.Navigate(typeof(MainPage), e);
                //Message.Text = "You logged in";
-               Frame.Navigate(typeof(MainPage));
+               Frame.Navigate(typeof(HamburgerMenu));
             }
             else
             {

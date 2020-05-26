@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using FedtFitness.Model;
 using FedtFitness.ViewModel;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -32,19 +33,12 @@ namespace FedtFitness.View
 
         FiltersViewModel evm = new FiltersViewModel();
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Training_Click(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(Training), e);
         }
 
-       // public void EquipmentCombobox(object sender, RoutedEventArgs e)
-        //{
-
-        //}
-
-
-
-        
-
     }
+
+
 }

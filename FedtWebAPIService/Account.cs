@@ -6,8 +6,8 @@ namespace FedtWebAPIService
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Table")]
-    public partial class Table
+    [Table("Account")]
+    public partial class Account
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

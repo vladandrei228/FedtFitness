@@ -12,44 +12,44 @@ using FedtWebAPIService;
 
 namespace FedtWebAPIService.Controllers
 {
-    public class TablesController : ApiController
+    public class AccountsController : ApiController
     {
         private Model1 db = new Model1();
 
-        // GET: api/Tables
-        public IQueryable<Table> GetTables()
+        // GET: api/Accounts
+        public IQueryable<Account> GetAccounts()
         {
-            return db.Tables;
+            return db.Accounts;
         }
 
-        // GET: api/Tables/5
-        [ResponseType(typeof(Table))]
-        public IHttpActionResult GetTable(int id)
+        // GET: api/Accounts/5
+        [ResponseType(typeof(Account))]
+        public IHttpActionResult GetAccount(int id)
         {
-            Table table = db.Tables.Find(id);
-            if (table == null)
+            Account account = db.Accounts.Find(id);
+            if (account == null)
             {
                 return NotFound();
             }
 
-            return Ok(table);
+            return Ok(account);
         }
 
-        // PUT: api/Tables/5
+        // PUT: api/Accounts/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutTable(int id, Table table)
+        public IHttpActionResult PutAccount(int id, Account account)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != table.Idregister)
+            if (id != account.Idregister)
             {
                 return BadRequest();
             }
 
-            db.Entry(table).State = EntityState.Modified;
+            db.Entry(account).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace FedtWebAPIService.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TableExists(id))
+                if (!AccountExists(id))
                 {
                     return NotFound();
                 }
@@ -70,16 +70,16 @@ namespace FedtWebAPIService.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Tables
-        [ResponseType(typeof(Table))]
-        public IHttpActionResult PostTable(Table table)
+        // POST: api/Accounts
+        [ResponseType(typeof(Account))]
+        public IHttpActionResult PostAccount(Account account)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Tables.Add(table);
+            db.Accounts.Add(account);
 
             try
             {
@@ -87,7 +87,7 @@ namespace FedtWebAPIService.Controllers
             }
             catch (DbUpdateException)
             {
-                if (TableExists(table.Idregister))
+                if (AccountExists(account.Idregister))
                 {
                     return Conflict();
                 }
@@ -97,23 +97,23 @@ namespace FedtWebAPIService.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = table.Idregister }, table);
+            return CreatedAtRoute("DefaultApi", new { id = account.Idregister }, account);
         }
 
-        // DELETE: api/Tables/5
-        [ResponseType(typeof(Table))]
-        public IHttpActionResult DeleteTable(int id)
+        // DELETE: api/Accounts/5
+        [ResponseType(typeof(Account))]
+        public IHttpActionResult DeleteAccount(int id)
         {
-            Table table = db.Tables.Find(id);
-            if (table == null)
+            Account account = db.Accounts.Find(id);
+            if (account == null)
             {
                 return NotFound();
             }
 
-            db.Tables.Remove(table);
+            db.Accounts.Remove(account);
             db.SaveChanges();
 
-            return Ok(table);
+            return Ok(account);
         }
 
         protected override void Dispose(bool disposing)
@@ -125,9 +125,9 @@ namespace FedtWebAPIService.Controllers
             base.Dispose(disposing);
         }
 
-        private bool TableExists(int id)
+        private bool AccountExists(int id)
         {
-            return db.Tables.Count(e => e.Idregister == id) > 0;
+            return db.Accounts.Count(e => e.Idregister == id) > 0;
         }
     }
 }

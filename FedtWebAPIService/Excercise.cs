@@ -9,7 +9,6 @@ namespace FedtWebAPIService
     [Table("Excercise")]
     public partial class Excercise
     {
-        public int? Workout_ID { get; set; }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

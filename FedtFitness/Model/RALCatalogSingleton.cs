@@ -14,7 +14,7 @@ namespace FedtFitness.Model
         public ObservableCollection<RegisterAndLogin> rAl { get; set; }
         private static RALCatalogSingleton _instance;
         private static string serverURL = "http://localhost:63830/";
-        private static string url = "api/Tables";
+        private static string url = "api/Accounts";
 
         private RALCatalogSingleton()
         {

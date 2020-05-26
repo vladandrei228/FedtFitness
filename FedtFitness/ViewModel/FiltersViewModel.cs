@@ -10,10 +10,30 @@ using FedtFitness.Annotations;
 using FedtFitness.Model;
 using FedtFitness.View;
 
+
 namespace FedtFitness.ViewModel
 {
-    class FiltersViewModel : INotifyPropertyChanged
+    public class FiltersViewModel : INotifyPropertyChanged
     {
+
+        public FiltersViewModel()
+        {
+            EquipmentCatalogSingleton = EquipmentCatalogSingleton.Instance;
+            _selectedEquipment = new Equipment(Equipment_ID, Name);
+            AllEquipments = EquipmentCatalogSingleton.Equipments;
+
+            MuscleGroupCatalogSingleton = MuscleGroupCatalogSingleton.Instance;
+            _selectedMuscleGroup = new MuscleGroup(Muscles_ID, MGName);
+            AllMuscleGroups = MuscleGroupCatalogSingleton.MuscleGroups;
+
+            ExerciseCatalogSingleton = ExerciseCatalogSingleton.Instance;
+            AllExcercises = ExerciseCatalogSingleton.Exercises;
+
+        }
+
+
+
+
         //EQUIPMENT
 
         public EquipmentCatalogSingleton EquipmentCatalogSingleton { get; set; }
@@ -25,15 +45,16 @@ namespace FedtFitness.ViewModel
 
         public Equipment SelectedEquipment
         {
-            get { return _selectedEquipment; }
+            get
+            {
+                return _selectedEquipment;
+            }
             set
             {
                 _selectedEquipment = value;
                 OnPropertyChanged(nameof(F1));
             }
         }
-
-
 
         //MUSCLE GROUP
 
@@ -55,57 +76,90 @@ namespace FedtFitness.ViewModel
         }
 
 
-        public FiltersViewModel()
-        {
-            EquipmentCatalogSingleton = EquipmentCatalogSingleton.Instance;
-            _selectedEquipment = new Equipment(Equipment_ID, Name);
-            AllEquipments = EquipmentCatalogSingleton.Equipments;
 
-            MuscleGroupCatalogSingleton = MuscleGroupCatalogSingleton.Instance;
-            _selectedMuscleGroup = new MuscleGroup(Muscles_ID, MGName);
-            AllMuscleGroups = MuscleGroupCatalogSingleton.MuscleGroups;
+        //REFERENCES
 
-            ecs = ExerciseCatalogSingleton.Instance;
-        }
+        public ExerciseCatalogSingleton ExerciseCatalogSingleton { get; set; }
+        public ObservableCollection<Excercise> AllExcercises { get; set; }
 
-        public ExerciseViewModel abs { get; set; }
 
-        //FILTERS
-        public ExerciseCatalogSingleton ecs { get; set; }
-        public ObservableCollection<Exercise> AllExercises
+
+        //CHECK IF ANY EXERCISES APPLY BOTH FILTERS AND CREATE FILTERED COLLECTION
+
+        public ObservableCollection<Excercise> F1
         {
             get
             {
-                return ecs.Exercises;
+                IEnumerable<Excercise> filtered = AllExcercises.Where(ex => ex.Equipment_ID == SelectedEquipment.Equipment_ID
+                                                                          && ex.Muscles_ID == SelectedMuscleGroup.Muscles_ID);
+                ExerciseCatalogSingleton.TrainingExcercises = new ObservableCollection<Excercise>(filtered.ToList());
+                return new ObservableCollection<Excercise>(filtered);
+
+            }
+
+        }
+
+        public decimal ProgressPercentage
+        {
+            get
+            {
+                if (ExerciseCatalogSingleton.TrainingExcercises == null)
+                {
+                    return 0;
+
+                }
+                else
+                {
+                    return 3m / ExerciseCatalogSingleton.TrainingExcercises.Count * 100m;
+                }
             }
         }
 
-        public ObservableCollection<Exercise> F1
-       {
-           get
-           {
-               
-               
-               IEnumerable<Exercise>  filtered= AllExercises.Where(ex => ex.Equipment_ID == SelectedEquipment.Equipment_ID && ex.Muscles_ID == SelectedMuscleGroup.Muscles_ID);
-               return new ObservableCollection<Exercise>(filtered);
-           }
-       }
-       public ObservableCollection<Exercise> F2 {
-           get
-           {
+
+        //private decimal progressPercentage = 3m / ExerciseCatalogSingleton.Instance.TrainingExcercises.Count * 100m;
+
+        //public decimal ProgressPercentage
+        //{
+        //    get
+        //    {
+        //        if (ExerciseCatalogSingleton.TrainingExcercises == null)
+        //        {
+        //            return 0;
+        //        }
+        //        else
+        //        {
+        //            return progressPercentage;
+        //        }
+        //    }
+
+        //    set
+        //    {
+        //        progressPercentage = value;
+        //        OnPropertyChanged(nameof(progressPercentage));
+        //    }
 
 
-               IEnumerable<Exercise> filtered2 = AllExercises.Where(ex => ex.Muscles_ID == SelectedMuscleGroup.Muscles_ID);
-               return new ObservableCollection<Exercise>(filtered2);
-           }
-       }
+        private Excercise _selectedExercise;
+        public Excercise SelectedExercise
+        {
+            get
+            {
+                return _selectedExercise;
+            }
+            set
+            {
+                _selectedExercise = value;
+                OnPropertyChanged(nameof(SelectedExercise));
+            }
+        }
 
-       public event PropertyChangedEventHandler PropertyChanged;
 
-       [NotifyPropertyChangedInvocator]
-       protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-       {
-           PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-       }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

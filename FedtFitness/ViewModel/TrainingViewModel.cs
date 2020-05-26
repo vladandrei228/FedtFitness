@@ -6,17 +6,17 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.Security.Authentication.Web.Core;
 using FedtFitness.Annotations;
 using FedtFitness.Model;
-
+using FedtFitness.Persistency;
+using Windows.UI.Xaml.Controls;
 
 namespace FedtFitness.ViewModel
 {
-    public class ExerciseViewModel : INotifyPropertyChanged
+    public class TrainingViewModel : INotifyPropertyChanged
     {
+
         public ObservableCollection<Excercise> AllExcercises { get; set; }
-        public ObservableCollection<Excercise> F1 { get; set; }
         public ExerciseCatalogSingleton ExerciseCatalogSingleton { get; set; }
 
         public int Exercise_ID { get; set; }
@@ -26,12 +26,26 @@ namespace FedtFitness.ViewModel
         public int Muscles_ID { get; set; }
         public string Description { get; set; }
 
-        public ExerciseViewModel()
+        public TrainingViewModel()
         {
             ExerciseCatalogSingleton = ExerciseCatalogSingleton.Instance;
+            _selectedExercise = new Excercise(Exercise_ID, ExName, Length, Equipment_ID, Muscles_ID, Description);
             AllExcercises = ExerciseCatalogSingleton.Exercises;
         }
 
+        private Excercise _selectedExercise;
+        public Excercise SelectedExercise
+        {
+            get
+            {
+                return _selectedExercise;
+            }
+            set
+            {
+                _selectedExercise = value;
+                OnPropertyChanged(nameof(SelectedExercise));
+            }
+        }
 
 
 
