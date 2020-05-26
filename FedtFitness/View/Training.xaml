@@ -189,26 +189,6 @@
                     Content="Complete workout">
             </Button>
 
-
-        </StackPanel>
-
-
-
-
-        <!--Back and Next Button-->
-
-        <StackPanel Style="{StaticResource StackPanelStyle}"
-                    Background="#B8C5D6"
-                    Opacity="0.8"
-                    Grid.Column="1" 
-                    Grid.Row="3" 
-                    Orientation="Horizontal">
-            <Button Style="{StaticResource ButtonStyle}" 
-                    Content="Back">
-            </Button>
-            <Button Style="{StaticResource ButtonStyle}" 
-                    Content="Next">
-            </Button>
         </StackPanel>
 
     </Grid>
