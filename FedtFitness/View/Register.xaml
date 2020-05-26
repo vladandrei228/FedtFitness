@@ -65,7 +65,16 @@
                     Text="{Binding Email, Mode=TwoWay}"
                 />
             </StackPanel>
-            <Button Name="register" Content="Register" FontSize="50" Width="375" Height="99" Command="{Binding AddUserCommand}"/>
+            <Button Name="register" 
+                    Content="Register" 
+                    FontSize="35" 
+                    HorizontalAlignment="Center"
+                    Command="{Binding AddUserCommand}"/>
+            <Button Content="Login" 
+                    FontSize="35"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Click="Login_Click" />
         </StackPanel>
 
 

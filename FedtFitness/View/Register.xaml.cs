@@ -29,5 +29,10 @@ namespace FedtFitness.View
             this.DataContext = rr;
         }
         RALVM rr = new RALVM();
+
+        private void Login_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Login));
+        }
     }
 }
