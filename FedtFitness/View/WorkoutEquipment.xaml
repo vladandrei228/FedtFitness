@@ -169,17 +169,20 @@
             </StackPanel>
         </StackPanel>
 
-        <!--Button-->
+
 
         <StackPanel Style="{StaticResource StackPanelStyle}"
                     Grid.Column="3" 
                     Grid.Row="3">
+
+            <!--Start Workout Button-->
             <Button Style="{StaticResource ButtonStyle}"
                     Background="#B8C5D6"
+                    IsEnabled="{Binding StartWorkoutVisibility}"
                     Opacity="0.8"
                     Content="Start workout"
-                    Click="Training_Click">
-            </Button>
+                    Click="Training_Click"/>
+
         </StackPanel>
 
 

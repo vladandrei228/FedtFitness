@@ -6,7 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="using:FedtFitness.ViewModel"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
    mc:Ignorable="d">
 
 
@@ -41,7 +40,7 @@
     <Grid>
 
         <Grid.Background>
-            <ImageBrush ImageSource="../Assets/test.jpg" 
+            <ImageBrush ImageSource="../Assets/workout.jpg" 
                         Stretch="UniformToFill" 
                         Opacity="0.6"/>
         </Grid.Background>
@@ -128,32 +127,15 @@
 
                 <!-- Mark as done Button-->
 
-                <Button Style="{StaticResource ButtonStyle}" 
+                <Button Click="MarkAsDone_Click"
+                        Style="{StaticResource ButtonStyle}" 
                     HorizontalAlignment="Center"
                     VerticalAlignment="Bottom"
-                    Background="#B8C5D6"
+                        IsEnabled="{Binding MarkAsDoneVisibility, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                        Background="#B8C5D6"
                     Opacity="0.8"
                     Content="Mark as Done">
                 </Button>
-
-                <!--Exercise Muscled_ID-->
-                <!--
-
-            <TextBlock Style="{StaticResource TextBlockStyle}"
-                       TextWrapping="Wrap">
-                       <Run Text="ID of Muscles used:"/>
-                       <Run Text="{Binding SelectedExercise.Muscles_ID}"/>
-            </TextBlock>
-
-            -->
-                <!--Exercise Equipment_ID-->
-                <!--
-
-            <TextBlock Style="{StaticResource TextBlockStyle}" 
-                       TextWrapping="Wrap">
-                <Run Text="ID of Equipment used:"/>
-                <Run Text="{Binding SelectedExercise.Equipment_ID}"/>
-            </TextBlock>-->
             </StackPanel>
         </StackPanel>
 
@@ -167,13 +149,12 @@
                     HorizontalAlignment="Stretch">
             <TextBlock   HorizontalAlignment="Center" 
                          FontSize="24" FontWeight="Bold">
-                <Run Text="{Binding ProgressPercentage}"/>
+                <Run Text="{Binding ProgressPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                 <Run Text="% Completed"/>
             </TextBlock>
             <ProgressBar Width="400"
                          Height="15"
-                         Value="{Binding ProgressPercentage, 
-                         UpdateSourceTrigger=PropertyChanged}" 
+                         Value="{Binding ProgressPercentage, UpdateSourceTrigger=PropertyChanged}" 
                          Margin="10,10,10,10"/>
         </StackPanel>
 

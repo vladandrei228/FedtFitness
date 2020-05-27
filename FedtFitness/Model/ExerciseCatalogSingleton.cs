@@ -11,8 +11,26 @@ namespace FedtFitness.Model
     public class ExerciseCatalogSingleton
     {
         public ObservableCollection<Excercise> Exercises { get; set; }
+        
         private static ExerciseCatalogSingleton _instance;
-        public ObservableCollection<Excercise> TrainingExcercises { get; set; }
+
+        public Excercise SelectedExercise { get; set; }
+        public ObservableCollection<Excercise> _trainingExcercises;
+        public ObservableCollection<Excercise> TrainingExcercises
+        {
+            get { return _trainingExcercises; }
+            set
+            {
+                _trainingExcercises = value;
+                FinishedTrainingExercises = new ObservableCollection<bool>();
+                foreach (var trainingexcercise in _trainingExcercises)
+                {
+                    FinishedTrainingExercises.Add(false);
+                }
+            }
+        }
+        public ObservableCollection<bool> FinishedTrainingExercises { get; set; }
+
         private static string url = "api/Excercises";
 
         GenericFedtWebAPI<Excercise> exercicesweapi = new GenericFedtWebAPI<Excercise>(url);

@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using FedtFitness.Model;
+using FedtFitness.ViewModel;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -24,10 +25,15 @@ namespace FedtFitness.View
     /// </summary>
     public sealed partial class Training : Page
     {
+        FiltersViewModel fvm = new FiltersViewModel();
+
         public Training()
         {
             this.InitializeComponent();
         }
-
+        private void MarkAsDone_Click(object sender, RoutedEventArgs e)
+        {
+            fvm.ToggleMarkAsDoneButton_OnMarkAsDoneClicked();
+        }
     }
 }

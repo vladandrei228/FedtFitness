@@ -28,7 +28,7 @@ namespace FedtFitness.View
         public WorkoutEquipment()
         {
             this.InitializeComponent();
-            this.DataContext = evm;
+       //     this.DataContext = evm;
         }
 
         FiltersViewModel evm = new FiltersViewModel();
@@ -38,7 +38,11 @@ namespace FedtFitness.View
             Frame.Navigate(typeof(Training), e);
         }
 
-    }
+
+
+
+
+}
 
 
 }

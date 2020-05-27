@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls.Primitives;
 using FedtFitness.Annotations;
 using FedtFitness.Model;
 using FedtFitness.View;
@@ -29,10 +30,73 @@ namespace FedtFitness.ViewModel
             ExerciseCatalogSingleton = ExerciseCatalogSingleton.Instance;
             AllExcercises = ExerciseCatalogSingleton.Exercises;
 
+            StartWorkoutVisibility = "false";
+            //MarkAsDoneVisibility = "true";
         }
 
 
+        public string StartWorkoutVisibility { get; set; }
+        // Method that checks if Start Workout Button must be either enabled or disabled
+        public void ToggleStartWorkoutButtonIfNeeded()
+        {
+            if (F1.Count == 0)
+            {
+                if (StartWorkoutVisibility != "false")
+                {
+                    StartWorkoutVisibility = "false";
+                    OnPropertyChanged(nameof(StartWorkoutVisibility));
+                }
+            }
+            else
+            {
+                if (StartWorkoutVisibility != "true")
+                {
+                    StartWorkoutVisibility = "true";
+                    OnPropertyChanged(nameof(StartWorkoutVisibility));
+                }
+            }
+        }
 
+
+        
+
+
+        public string MarkAsDoneVisibility { get; set; }
+        // Method that checks if Mark as Done Button must be either enabled or disabled
+        
+        public void ToggleMarkAsDoneButton_OnMarkAsDoneClicked()
+        {
+            for (int i = 0; i < ExerciseCatalogSingleton.TrainingExcercises.Count; i++)
+            {
+                if (ExerciseCatalogSingleton.TrainingExcercises[i].Excercise_ID == SelectedExercise.Excercise_ID)
+                {
+                    ExerciseCatalogSingleton.FinishedTrainingExercises[i] = true;
+                    break;
+                }
+            }
+
+            MarkAsDoneVisibility = "false";
+            OnPropertyChanged(nameof(MarkAsDoneVisibility));
+            OnPropertyChanged(nameof(ProgressPercentage));
+        }
+
+
+        public void ToggleMarkAsDoneButton_OnSelectedExercise()
+        {
+            for (int i = 0; i < ExerciseCatalogSingleton.TrainingExcercises.Count; i++)
+            {
+                if (ExerciseCatalogSingleton.TrainingExcercises[i].Excercise_ID == SelectedExercise.Excercise_ID)
+                {
+                    if (ExerciseCatalogSingleton.FinishedTrainingExercises[i])
+                        MarkAsDoneVisibility = "false";
+                    else
+                        MarkAsDoneVisibility = "true";
+                    break;
+                }
+            }
+
+            OnPropertyChanged(nameof(MarkAsDoneVisibility));
+        }
 
         //EQUIPMENT
 
@@ -53,6 +117,7 @@ namespace FedtFitness.ViewModel
             {
                 _selectedEquipment = value;
                 OnPropertyChanged(nameof(F1));
+                ToggleStartWorkoutButtonIfNeeded();
             }
         }
 
@@ -72,19 +137,20 @@ namespace FedtFitness.ViewModel
             {
                 _selectedMuscleGroup = value;
                 OnPropertyChanged(nameof(F1));
+                ToggleStartWorkoutButtonIfNeeded();
             }
         }
-
-
 
         //REFERENCES
 
         public ExerciseCatalogSingleton ExerciseCatalogSingleton { get; set; }
         public ObservableCollection<Excercise> AllExcercises { get; set; }
 
-
-
+        
         //CHECK IF ANY EXERCISES APPLY BOTH FILTERS AND CREATE FILTERED COLLECTION
+
+        public ObservableCollection<Excercise> _f1;
+
 
         public ObservableCollection<Excercise> F1
         {
@@ -94,10 +160,10 @@ namespace FedtFitness.ViewModel
                                                                           && ex.Muscles_ID == SelectedMuscleGroup.Muscles_ID);
                 ExerciseCatalogSingleton.TrainingExcercises = new ObservableCollection<Excercise>(filtered.ToList());
                 return new ObservableCollection<Excercise>(filtered);
-
             }
-
         }
+
+        
 
         public decimal ProgressPercentage
         {
@@ -110,46 +176,32 @@ namespace FedtFitness.ViewModel
                 }
                 else
                 {
-                    return 3m / ExerciseCatalogSingleton.TrainingExcercises.Count * 100m;
+                    decimal numfinishedexercises = 0m;
+                    foreach (var finishedexercise in ExerciseCatalogSingleton.FinishedTrainingExercises)
+                    {
+                        if (finishedexercise)
+                        {
+                            numfinishedexercises += 1.0m;
+                        }
+                    }
+
+                    return numfinishedexercises / ExerciseCatalogSingleton.TrainingExcercises.Count * 100m;
                 }
             }
         }
 
 
-        //private decimal progressPercentage = 3m / ExerciseCatalogSingleton.Instance.TrainingExcercises.Count * 100m;
-
-        //public decimal ProgressPercentage
-        //{
-        //    get
-        //    {
-        //        if (ExerciseCatalogSingleton.TrainingExcercises == null)
-        //        {
-        //            return 0;
-        //        }
-        //        else
-        //        {
-        //            return progressPercentage;
-        //        }
-        //    }
-
-        //    set
-        //    {
-        //        progressPercentage = value;
-        //        OnPropertyChanged(nameof(progressPercentage));
-        //    }
-
-
-        private Excercise _selectedExercise;
         public Excercise SelectedExercise
         {
             get
             {
-                return _selectedExercise;
+                return ExerciseCatalogSingleton.SelectedExercise;
             }
             set
             {
-                _selectedExercise = value;
+                ExerciseCatalogSingleton.SelectedExercise = value;
                 OnPropertyChanged(nameof(SelectedExercise));
+                ToggleMarkAsDoneButton_OnSelectedExercise();
             }
         }
 
