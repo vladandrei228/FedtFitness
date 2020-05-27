@@ -12,5 +12,40 @@
                         Stretch="UniformToFill" 
                         Opacity="0.6"/>
         </Grid.Background>
+
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="1" Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Orientation="Vertical">
+            <Button Click="Workout_Click">
+                <Image Source="../Assets/exercise.jpg"
+                       Height="230"
+
+                       HorizontalAlignment="Center"/>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.ColumnSpan="3" 
+                    Grid.Row="2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top">
+            <TextBlock Text="Press here to start working out!"
+                       FontSize="40"
+                       Foreground="DarkRed"/>
+        </StackPanel>
+
     </Grid>
 </Page>

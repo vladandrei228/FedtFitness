@@ -164,6 +164,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\exercise.jpg" />
     <Content Include="Assets\fedtlogo.png" />
     <Content Include="Assets\test.jpg" />
     <Content Include="Assets\workout.jpg" />
