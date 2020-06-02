@@ -25,11 +25,12 @@ namespace FedtFitness.ViewModel
         public int Equipment_ID { get; set; }
         public int Muscles_ID { get; set; }
         public string Description { get; set; }
+        public string Image { get; set; }
 
         public TrainingViewModel()
         {
             ExerciseCatalogSingleton = ExerciseCatalogSingleton.Instance;
-            _selectedExercise = new Excercise(Exercise_ID, ExName, Length, Equipment_ID, Muscles_ID, Description);
+            _selectedExercise = new Excercise(Exercise_ID, ExName, Length, Equipment_ID, Muscles_ID, Description, Image);
             AllExcercises = ExerciseCatalogSingleton.Exercises;
         }
 

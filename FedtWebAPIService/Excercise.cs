@@ -23,6 +23,8 @@ namespace FedtWebAPIService
 
         public int? Muscles_ID { get; set; }
 
+        public string Image { get; set; }
+
         [StringLength(500)]
         public string Description { get; set; }
     }

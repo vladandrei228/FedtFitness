@@ -14,9 +14,10 @@ namespace FedtFitness.Model
         public int _equipmentId;
         public int _musclesId;
         public string _description;
+        public string _image;
 
         public Excercise(int exerciseId, string name, int? length, int equipmentId, int musclesId,
-            string description)
+            string description, string image)
         {
             _exerciseId = exerciseId;
             _name = name;
@@ -24,6 +25,7 @@ namespace FedtFitness.Model
             _equipmentId = equipmentId;
             _musclesId = musclesId;
             _description = description;
+            _image = image;
         }
 
 
@@ -62,6 +64,12 @@ namespace FedtFitness.Model
         {
             get { return _description; }
             set { _description = value; }
+        }
+
+        public string Image
+        {
+            get { return _image; }
+            set { _image = value; }
         }
 
         public bool IsSelected { get; internal set; }

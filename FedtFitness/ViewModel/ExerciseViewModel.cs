@@ -25,6 +25,7 @@ namespace FedtFitness.ViewModel
         public int Equipment_ID { get; set; }
         public int Muscles_ID { get; set; }
         public string Description { get; set; }
+        public string Image { get; set; }
 
         public ExerciseViewModel()
         {

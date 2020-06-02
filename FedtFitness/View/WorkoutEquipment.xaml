@@ -163,10 +163,22 @@
                          HorizontalAlignment="Center" 
                          FontSize="24"
                          FontWeight="Bold"/>
-                <TextBlock Style="{StaticResource TextBlockStyle}"  
+                <StackPanel Orientation="Horizontal" 
+                            Margin="20,20,20,20">
+                    <StackPanel Width="300">
+                        <TextBlock Style="{StaticResource TextBlockStyle}"  
                        Text="{Binding SelectedExercise.Description}"
-                       TextWrapping="Wrap"/>
+                       TextWrapping="Wrap"
+                       TextAlignment="Justify"/>
+                    </StackPanel>
+                    <StackPanel Width="300"
+                                Margin="20,20,20,20">
+                <Image Source="{Binding SelectedExercise.Image}"
+                       Stretch="Uniform"/>
+                    </StackPanel>
+                </StackPanel>
             </StackPanel>
+            
         </StackPanel>
 
 
