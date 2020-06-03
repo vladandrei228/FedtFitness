@@ -57,6 +57,12 @@ namespace FedtFitness.View
             Content.Navigate(typeof(Training), e);
         }
 
+        private void CustomWorkout_Click(object sender, RoutedEventArgs e)
+        {
+            Content.Navigate(typeof(CustomWorkout), e);
+        }
+
+
         private void Content_Navigated(object sender, NavigationEventArgs e)
         {
         }

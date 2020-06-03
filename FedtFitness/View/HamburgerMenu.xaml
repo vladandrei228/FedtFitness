@@ -85,6 +85,20 @@
                         </Button>
 
 
+                        <Button Grid.Row="3" Click="CustomWorkout_Click" Style="{StaticResource ButtonStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition  Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="150"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <FontIcon Grid.Column="0" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE735;"></FontIcon>
+                                <TextBlock Grid.Column="1" Text="Custom Workout" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                </TextBlock>
+                            </Grid>
+                        </Button>
+
+
+
                         <Button Visibility="Collapsed" Grid.Row="4" Click="Training_Click" Style="{StaticResource ButtonStyle}">
                             <Grid>
                                 <Grid.ColumnDefinitions>

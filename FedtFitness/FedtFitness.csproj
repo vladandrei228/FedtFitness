@@ -129,6 +129,9 @@
     <Compile Include="ViewModel\FiltersViewModel.cs" />
     <Compile Include="ViewModel\RALVM.cs" />
     <Compile Include="ViewModel\TrainingViewModel.cs" />
+    <Compile Include="View\CustomWorkout.xaml.cs">
+      <DependentUpon>CustomWorkout.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -226,6 +229,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\CustomWorkout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
