@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FedtFitness.Model
 {
-    class RegisterAndLogin
+    public class RegisterAndLogin
     {
         private int _idregister;
         private string _username;

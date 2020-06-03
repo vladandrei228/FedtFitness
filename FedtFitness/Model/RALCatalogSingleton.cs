@@ -9,7 +9,7 @@ using FedtFitness.Persistency;
 
 namespace FedtFitness.Model
 {
-    class RALCatalogSingleton
+    public class RALCatalogSingleton
     {
         public ObservableCollection<RegisterAndLogin> rAl { get; set; }
         private static RALCatalogSingleton _instance;
