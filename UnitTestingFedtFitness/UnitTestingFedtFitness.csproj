@@ -4,19 +4,19 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{AECFB922-03B3-4557-85B7-589C1F0E9E65}</ProjectGuid>
+    <ProjectGuid>{B8865FBD-E690-48DD-8291-71137162DB05}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FedtFitness</RootNamespace>
-    <AssemblyName>FedtFitness</AssemblyName>
+    <RootNamespace>UnitTestingFedtFitness</RootNamespace>
+    <AssemblyName>UnitTestingFedtFitness</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
+    <UnitTestPlatformVersion Condition="'$(UnitTestPlatformVersion)' == ''">$(VisualStudioVersion)</UnitTestPlatformVersion>
     <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
@@ -116,50 +116,20 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="datacontext.cs" />
-    <Compile Include="Model\RALCatalogSingleton.cs" />
-    <Compile Include="Model\RegisterAndLogin.cs" />
-    <Compile Include="Persistency\GenericFedtWebAPI.cs" />
-    <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="RelayCommand\RelayCommand.cs" />
-    <Compile Include="ViewModel\ExerciseViewModel.cs" />
-    <Compile Include="ViewModel\FiltersViewModel.cs" />
-    <Compile Include="ViewModel\RALVM.cs" />
-    <Compile Include="ViewModel\TrainingViewModel.cs" />
-    <Compile Include="View\CustomWorkout.xaml.cs">
-      <DependentUpon>CustomWorkout.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Register.xaml.cs">
-      <DependentUpon>Register.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\HamburgerMenu.xaml.cs">
-      <DependentUpon>HamburgerMenu.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\HomePage.xaml.cs">
-      <DependentUpon>HomePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Equipment.cs" />
-    <Compile Include="Model\EquipmentCatalogSingleton.cs" />
-    <Compile Include="Model\Exercise.cs" />
-    <Compile Include="Model\ExerciseCatalogSingleton.cs" />
-    <Compile Include="Model\MuscleGroup.cs" />
-    <Compile Include="Model\MuscleGroupCatalogSingleton.cs" />
+    <SDKReference Include="TestPlatform.Universal, Version=$(UnitTestPlatformVersion)" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\Training.xaml.cs">
-      <DependentUpon>Training.xaml</DependentUpon>
+    <Compile Include="UnitTestApp.xaml.cs">
+      <DependentUpon>UnitTestApp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\WelcomePage.xaml.cs">
-      <DependentUpon>WelcomePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\WorkoutEquipment.xaml.cs">
-      <DependentUpon>WorkoutEquipment.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="MyLoginTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="UnitTestApp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -167,55 +137,6 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\1.jpg" />
-    <Content Include="Assets\10.jpg" />
-    <Content Include="Assets\11.jpg" />
-    <Content Include="Assets\12.jpg" />
-    <Content Include="Assets\13.jpg" />
-    <Content Include="Assets\14.jpg" />
-    <Content Include="Assets\15.jpg" />
-    <Content Include="Assets\16.jpg" />
-    <Content Include="Assets\17.png" />
-    <Content Include="Assets\18.jpg" />
-    <Content Include="Assets\19.jpg" />
-    <Content Include="Assets\2.jpg" />
-    <Content Include="Assets\20.jpg" />
-    <Content Include="Assets\21.jpg" />
-    <Content Include="Assets\22.jpg" />
-    <Content Include="Assets\23.jpg" />
-    <Content Include="Assets\24.png" />
-    <Content Include="Assets\25.jpg" />
-    <Content Include="Assets\26.jpg" />
-    <Content Include="Assets\27.jpg" />
-    <Content Include="Assets\28.jpg" />
-    <Content Include="Assets\29.jpg" />
-    <Content Include="Assets\3.jpg" />
-    <Content Include="Assets\30.jpg" />
-    <Content Include="Assets\31.jpg" />
-    <Content Include="Assets\32.jpg" />
-    <Content Include="Assets\33.jpg" />
-    <Content Include="Assets\34.jpg" />
-    <Content Include="Assets\35.jpg" />
-    <Content Include="Assets\36.jpg" />
-    <Content Include="Assets\37.jpg" />
-    <Content Include="Assets\38.jpg" />
-    <Content Include="Assets\39.jpg" />
-    <Content Include="Assets\4.jpg" />
-    <Content Include="Assets\40.jpg" />
-    <Content Include="Assets\41.jpg" />
-    <Content Include="Assets\42.jpg" />
-    <Content Include="Assets\43.jpg" />
-    <Content Include="Assets\44.jpg" />
-    <Content Include="Assets\5.jpg" />
-    <Content Include="Assets\6.jpg" />
-    <Content Include="Assets\7.jpg" />
-    <Content Include="Assets\8.jpg" />
-    <Content Include="Assets\9.jpg" />
-    <Content Include="Assets\exercise.jpg" />
-    <Content Include="Assets\fedtlogo.png" />
-    <Content Include="Assets\test.jpg" />
-    <Content Include="Assets\workout.jpg" />
-    <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
@@ -225,55 +146,22 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Page Include="View\CustomWorkout.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Login.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Register.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\HamburgerMenu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\HomePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Training.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\WelcomePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\WorkoutEquipment.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.2.9</Version>
+    </PackageReference>
+    <PackageReference Include="MSTest.TestAdapter">
+      <Version>2.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="MSTest.TestFramework">
+      <Version>2.0.0</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.10</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
-      <Version>2.0.1</Version>
-    </PackageReference>
-    <PackageReference Include="Newtonsoft.Json">
-      <Version>12.0.3</Version>
-    </PackageReference>
+    <ProjectReference Include="..\FedtFitness\FedtFitness.csproj">
+      <Project>{aecfb922-03b3-4557-85b7-589c1f0e9e65}</Project>
+      <Name>FedtFitness</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

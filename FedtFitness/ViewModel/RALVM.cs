@@ -15,7 +15,7 @@ using FedtFitness.View;
 
 namespace FedtFitness.ViewModel
 {
-    class RALVM : INotifyPropertyChanged
+    public class RALVM : INotifyPropertyChanged
     {
         private RALCatalogSingleton ralCatalogSingleton { get; set; }
 
