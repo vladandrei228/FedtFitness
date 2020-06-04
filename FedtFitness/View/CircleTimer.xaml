@@ -1,0 +1,31 @@
+﻿<UserControl
+    x:Class="FedtFitness.View.CircleTimer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="TheGrid" Width="28" Height="28" Margin="0" Background="Transparent">
+        <Path x:Name="ThePath" Fill="Transparent"
+ Stroke="#FF999999" StrokeThickness="4" StrokeDashCap="Flat">
+            <Path.Data>
+                <PathGeometry>
+                    <PathGeometry.Figures>
+                        <PathFigureCollection>
+                            <PathFigure StartPoint="12,24" x:Name="ThePathFigure">
+                                <PathFigure.Segments>
+                                    <PathSegmentCollection>
+                                        <ArcSegment x:Name="TheSegment" Size="12,12" IsLargeArc="False"
+ SweepDirection="Clockwise" Point="12,24" />
+                                    </PathSegmentCollection>
+                                </PathFigure.Segments>
+                            </PathFigure>
+                        </PathFigureCollection>
+                    </PathGeometry.Figures>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+    </Grid>
+</UserControl>

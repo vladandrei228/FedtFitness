@@ -48,7 +48,8 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="0.05*"/>
             <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width=".05"/>
+            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="0.2*"/>
         </Grid.ColumnDefinitions>
 
@@ -129,9 +130,29 @@
                         <Image Source="{Binding SelectedExercise.Image}"
                            Stretch="Uniform"/>
                     </StackPanel>
+                    
                 </StackPanel>
             </StackPanel>
         </StackPanel>
+
+        <Grid Grid.Row="2" Grid.Column="5">
+            <Ellipse Stroke="Red" StrokeThickness="2" Width="202" Height="202" Margin="0 0 5 5"/>
+            <local:CircleTimer x:Name="ProgressControl" Size="200" Color="MediumSpringGreen" LineWidth="6" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <TextBlock x:Name="Hour" Text="00:00:00:00"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0 20 0 0" />
+           
+
+        </Grid>
+        <Grid Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="Start" Content="Start" Click="Start_Click" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Width="100" />
+            <Button x:Name="Lap" Content="Lap" Click="Lap_Click" Margin="60 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Width="100" />
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="3" Grid.Column="3">
+            <TextBox x:Name="txtLap" Background="White"   TextWrapping="Wrap" AcceptsReturn="True" />
+        </Grid>
+
+        
 
 
 
