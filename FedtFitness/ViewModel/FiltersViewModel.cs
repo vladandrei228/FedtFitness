@@ -31,7 +31,7 @@ namespace FedtFitness.ViewModel
             AllExcercises = ExerciseCatalogSingleton.Exercises;
 
             StartWorkoutVisibility = "false";
-            //MarkAsDoneVisibility = "true";
+            MarkAsDoneVisibility = "true";
         }
 
 
@@ -83,22 +83,22 @@ namespace FedtFitness.ViewModel
 
 
 
-        //public void ToggleMarkAsDoneButton_OnSelectedExercise()
-        //{
-        //    for (int i = 0; i < ExerciseCatalogSingleton.TrainingExcercises.Count; i++)
-        //    {
-        //        if (ExerciseCatalogSingleton.TrainingExcercises[i].Excercise_ID == SelectedExercise.Excercise_ID)
-        //        {
-        //            if (ExerciseCatalogSingleton.FinishedTrainingExercises[i])
-        //                MarkAsDoneVisibility = "false";
-        //            else
-        //                MarkAsDoneVisibility = "true";
-        //            break;
-        //        }
-        //    }
+        public void ToggleMarkAsDoneButton_OnSelectedExercise()
+        {
+            for (int i = 0; i < ExerciseCatalogSingleton.TrainingExcercises.Count; i++)
+            {
+                if (ExerciseCatalogSingleton.TrainingExcercises[i].Excercise_ID == SelectedExercise.Excercise_ID)
+                {
+                    if (ExerciseCatalogSingleton.FinishedTrainingExercises[i])
+                        MarkAsDoneVisibility = "false";
+                    else
+                        MarkAsDoneVisibility = "true";
+                    break;
+                }
+            }
 
-        //    OnPropertyChanged(nameof(MarkAsDoneVisibility));
-        //}
+            OnPropertyChanged(nameof(MarkAsDoneVisibility));
+        }
 
         //EQUIPMENT
 
@@ -203,7 +203,7 @@ namespace FedtFitness.ViewModel
             {
                 ExerciseCatalogSingleton.SelectedExercise = value;
                 OnPropertyChanged(nameof(SelectedExercise));
-                //ToggleMarkAsDoneButton_OnSelectedExercise();
+                ToggleMarkAsDoneButton_OnSelectedExercise();
             }
         }
 

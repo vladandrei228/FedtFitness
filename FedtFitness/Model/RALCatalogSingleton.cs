@@ -13,14 +13,12 @@ namespace FedtFitness.Model
     {
         public ObservableCollection<RegisterAndLogin> rAl { get; set; }
         private static RALCatalogSingleton _instance;
-        private static string serverURL = "http://localhost:63830/";
         private static string url = "api/Accounts";
 
         private RALCatalogSingleton()
         {
             rAl = new ObservableCollection<RegisterAndLogin>();
             rAl = new ObservableCollection<RegisterAndLogin>(registerWebApiAsync.getAll());
-            //rAl.Add(new RegisterAndLogin("admin1", "admin1", "asdfg@gmail.com"));
         }
 
         public static RALCatalogSingleton Instance

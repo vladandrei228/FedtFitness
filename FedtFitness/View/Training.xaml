@@ -170,11 +170,13 @@
                 Style="{StaticResource ButtonStyle}" 
                 HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"
-                IsEnabled="{Binding MarkAsDoneVisibility, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                IsEnabled="{Binding MarkAsDoneVisibility, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
                 Background="#B8C5D6"
                 Opacity="0.8"
                 Content="Mark as Done">
         </Button>
+
+            <TextBox Width="250"></TextBox>
         </StackPanel>
 
         <!-- Complete workout Button-->
