@@ -16,30 +16,12 @@ using FedtFitness.View;
 
 //// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-//namespace FedtFitness.View
-//{
-//    /// <summary>
-//    /// An empty page that can be used on its own or navigated to within a Frame.
-//    /// </summary>
-//    public sealed partial class CustomWorkout : Page
-//    {
-//        public CustomWorkout()
-//        {
-//            this.InitializeComponent();
-//        }
-//    }
-//}
-//using System;
-//using Windows.UI.Xaml;
-//using Windows.UI.Xaml.Controls;
-//using Windows.UI.Xaml.Navigation;
 
-//// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace FedtFitness.View
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// A workout page where the user can freely select exercises and monitor their time
     /// </summary>
     public sealed partial class CustomWorkout : Page
     {
@@ -68,15 +50,15 @@ namespace FedtFitness.View
                 startedTime = DateTime.Now;
                 DispatcherTimerSetup();
 
-                Start.Content = "Stop";
+                Start.Content = "End Workout";
             }
             else
             {
                 isStop = false;
                 dispatcherTimer.Stop();
                 demoDispatcher.Stop();
-                Hour.Text = "00:00:00:00";
-                Start.Content = "Start";
+                Hour.Text = "0:00:00";
+                Start.Content = "Start Workout";
                 ProgressControl.SetBarLength(0.0);
                 ProgressAmount = 0.0;
             }
@@ -97,17 +79,19 @@ namespace FedtFitness.View
 
 
             timeSinceLastStop = TimeSpan.Zero;
-            Hour.Text = "00:00:00:00";
+            Hour.Text = "0:00:00";
             demoDispatcher = new DispatcherTimer();
             demoDispatcher.Tick += DemoDispatcher_Tick;
             demoDispatcher.Interval = new TimeSpan(0, 0, 0, 0, 1);
             demoDispatcher.Start();
         }
-        int lapCount = 0;
-        private void Lap_Click(object sender, RoutedEventArgs e)
+        
+
+        int setCount = 0;
+        private void Set_Click(object sender, RoutedEventArgs e)
         {
-            lapCount++;
-            txtLap.Text += "Lap " + lapCount + ": " + Hour.Text + "\n";
+            setCount++;
+            txtSet.Text += "Set " + setCount + ": " + Hour.Text + "\n";
         }
 
         private string MakeDigitString(int number, int count)
@@ -133,14 +117,13 @@ namespace FedtFitness.View
             }
             return result;
         }
-
+        
         private void DemoDispatcher_Tick(object sender, object e)
         {
             timePassed = DateTime.Now - startedTime;
-            Hour.Text = MakeDigitString((timeSinceLastStop + timePassed).Hours, 2) + ":"
+            Hour.Text = MakeDigitString((timeSinceLastStop + timePassed).Hours, 1) + ":"
                 + MakeDigitString((timeSinceLastStop + timePassed).Minutes, 2) + ":"
-                + MakeDigitString((timeSinceLastStop + timePassed).Seconds, 2) + ":"
-                + MakeDigitString((timeSinceLastStop + timePassed).Milliseconds, 3);
+                + MakeDigitString((timeSinceLastStop + timePassed).Seconds, 2);
         }
 
 
