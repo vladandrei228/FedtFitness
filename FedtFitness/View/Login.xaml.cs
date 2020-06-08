@@ -42,7 +42,7 @@ namespace FedtFitness.View
             }
             else
             {
-                Message.Text = "Your username or your password is incorect!";
+                Message.Text = "The username or password is incorrect!";
             }
         }
 

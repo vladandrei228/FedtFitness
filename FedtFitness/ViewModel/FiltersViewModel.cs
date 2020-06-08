@@ -82,22 +82,41 @@ namespace FedtFitness.ViewModel
 
 
 
-
         public void ToggleMarkAsDoneButton_OnSelectedExercise()
         {
+            if (ExerciseCatalogSingleton.TrainingExcercises == null)
+            {
+                MarkAsDoneVisibility = "false";
+            }
+
+            else
+            {
+               
+           
             for (int i = 0; i < ExerciseCatalogSingleton.TrainingExcercises.Count; i++)
             {
-                if (ExerciseCatalogSingleton.TrainingExcercises[i].Excercise_ID == SelectedExercise.Excercise_ID)
+                if (ExerciseCatalogSingleton.TrainingExcercises.Count == 0)
                 {
-                    if (ExerciseCatalogSingleton.FinishedTrainingExercises[i])
-                        MarkAsDoneVisibility = "false";
-                    else
-                        MarkAsDoneVisibility = "true";
-                    break;
+                    MarkAsDoneVisibility = "false";
                 }
+
+                else
+                {
+                    if (ExerciseCatalogSingleton.TrainingExcercises[i].Excercise_ID == SelectedExercise.Excercise_ID)
+                    {
+                        if (ExerciseCatalogSingleton.FinishedTrainingExercises[i])
+                            MarkAsDoneVisibility = "false";
+                        else
+                            MarkAsDoneVisibility = "true";
+                        break;
+                    }
+                }
+
+            }
             }
 
             OnPropertyChanged(nameof(MarkAsDoneVisibility));
+            OnPropertyChanged(nameof(ProgressPercentage));
         }
 
         //EQUIPMENT
@@ -158,14 +177,34 @@ namespace FedtFitness.ViewModel
         {
             get
             {
-                IEnumerable<Excercise> filtered = AllExcercises.Where(ex => ex.Equipment_ID == SelectedEquipment.Equipment_ID
-                                                                          && ex.Muscles_ID == SelectedMuscleGroup.Muscles_ID);
-                ExerciseCatalogSingleton.TrainingExcercises = new ObservableCollection<Excercise>(filtered.ToList());
-                return new ObservableCollection<Excercise>(filtered);
+
+                if (SelectedEquipment == null)
+                {
+                    IEnumerable<Excercise> filtered = AllExcercises.Where(ex => ex.Muscles_ID == SelectedMuscleGroup.Muscles_ID);
+                    ExerciseCatalogSingleton.TrainingExcercises = new ObservableCollection<Excercise>(filtered.ToList());
+                    return new ObservableCollection<Excercise>(filtered);
+                }
+
+                if (SelectedMuscleGroup == null)
+                {
+                    IEnumerable<Excercise> filtered = AllExcercises.Where(ex => ex.Equipment_ID == SelectedEquipment.Equipment_ID);
+                    ExerciseCatalogSingleton.TrainingExcercises = new ObservableCollection<Excercise>(filtered.ToList());
+                    return new ObservableCollection<Excercise>(filtered);
+                }
+
+                else
+                {
+                    IEnumerable<Excercise> filtered = AllExcercises.Where(ex => ex.Equipment_ID == SelectedEquipment.Equipment_ID
+                                                                                && ex.Muscles_ID == SelectedMuscleGroup.Muscles_ID);
+                    ExerciseCatalogSingleton.TrainingExcercises = new ObservableCollection<Excercise>(filtered.ToList());
+                    return new ObservableCollection<Excercise>(filtered);
+                }
+
+
             }
         }
 
-        
+
 
         public decimal ProgressPercentage
         {
@@ -174,20 +213,14 @@ namespace FedtFitness.ViewModel
                 if (ExerciseCatalogSingleton.TrainingExcercises == null)
                 {
                     return 0;
-
                 }
                 else
                 {
-                    decimal numfinishedexercises = 0m;
-                    foreach (var finishedexercise in ExerciseCatalogSingleton.FinishedTrainingExercises)
-                    {
-                        if (finishedexercise)
-                        {
-                            numfinishedexercises += 1.0m;
-                        }
-                    }
+                    decimal countCompletedExercises =
+                        Convert.ToDecimal(ExerciseCatalogSingleton.FinishedTrainingExercises.Count(c => c));
+                    decimal totalExercises = Convert.ToDecimal(ExerciseCatalogSingleton.TrainingExcercises.Count);
 
-                    return numfinishedexercises / ExerciseCatalogSingleton.TrainingExcercises.Count * 100m;
+                    return Math.Round((countCompletedExercises / totalExercises * 100m), 1);
                 }
             }
         }
