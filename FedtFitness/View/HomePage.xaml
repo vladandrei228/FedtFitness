@@ -18,17 +18,22 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height=".5*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height=".5*"/>
+            
+
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="1" Grid.Column="1"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Top"
+                    VerticalAlignment="Center"
                     Orientation="Vertical">
             <Button Click="Workout_Click">
                 <Image Source="../Assets/exercise.jpg"
@@ -37,15 +42,60 @@
                        HorizontalAlignment="Center"/>
             </Button>
         </StackPanel>
-
-        <StackPanel Grid.ColumnSpan="3" 
-                    Grid.Row="2"
+        <StackPanel Grid.Row="1" Grid.Column="3"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Top">
-            <TextBlock Text="Press here to start working out!"
-                       FontSize="40"
-                       Foreground="DarkRed"/>
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
+            <Button Click="CustomWorkout_Click">
+                <Image Source="../Assets/stopwatch.png"
+                       Height="230"
+
+                       HorizontalAlignment="Center"/>
+            </Button>
+
         </StackPanel>
+        <StackPanel Grid.ColumnSpan="1" 
+                    Grid.Row="2" Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="Black"
+                    BorderBrush="Black" BorderThickness="24" CornerRadius="10">
+            <TextBlock Text="Regular Workout" TextWrapping="Wrap" TextAlignment="Center"
+                       FontSize="40"
+                       Foreground="LightSkyBlue"
+                       Padding="1"
+                       />
+            <TextBlock Text="Here you can select what equipment and muscle groups you would like to work out in order to find exercises that cater to you" TextWrapping="Wrap" TextAlignment="Center"
+                       FontSize="12"
+                       Foreground="LightPink"
+                       Padding="1"/>
+            
+        </StackPanel>
+
+        <StackPanel Grid.ColumnSpan="1" 
+                    Grid.Row="1" Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Background="Black">
+        </StackPanel>
+
+        <StackPanel Grid.ColumnSpan="1" 
+                    Grid.Row="2" Grid.Column="3"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="Black"
+                    BorderBrush="Black" BorderThickness="24" CornerRadius="10"
+                    >
+            <TextBlock Text="Timed Workout" TextWrapping="Wrap" TextAlignment="Center"
+                       FontSize="40"
+                       Foreground="LightSkyBlue"
+                       Padding="1"/>
+            <TextBlock Text="Here you can select from a list of all the exercises and record your set times" TextWrapping="Wrap" TextAlignment="Center"
+                       FontSize="12"
+                       Foreground="LightPink"
+                       Padding="1"/>
+        </StackPanel>
+        
 
     </Grid>
 </Page>

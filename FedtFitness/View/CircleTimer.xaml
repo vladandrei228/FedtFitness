@@ -9,7 +9,7 @@
 
     <Grid x:Name="TheGrid" Width="28" Height="28" Margin="0" Background="Transparent">
         <Path x:Name="ThePath" Fill="Transparent"
- Stroke="#FF999999" StrokeThickness="4" StrokeDashCap="Flat">
+            Stroke="#FF999999" StrokeThickness="4" StrokeDashCap="Flat">
             <Path.Data>
                 <PathGeometry>
                     <PathGeometry.Figures>
@@ -18,7 +18,7 @@
                                 <PathFigure.Segments>
                                     <PathSegmentCollection>
                                         <ArcSegment x:Name="TheSegment" Size="12,12" IsLargeArc="False"
- SweepDirection="Clockwise" Point="12,24" />
+                                            SweepDirection="Clockwise" Point="12,24" />
                                     </PathSegmentCollection>
                                 </PathFigure.Segments>
                             </PathFigure>

@@ -31,5 +31,10 @@ namespace FedtFitness.View
         {
             Frame.Navigate(typeof(WorkoutEquipment), e);
         }
+
+        private void CustomWorkout_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(CustomWorkout), e);
+        }
     }
 }

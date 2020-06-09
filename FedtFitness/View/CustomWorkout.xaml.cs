@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.ServiceModel;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -14,17 +15,14 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using FedtFitness.View;
 
-//// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
-
 
 namespace FedtFitness.View
 {
-    /// <summary>
-    /// A workout page where the user can freely select exercises and monitor their time
-    /// </summary>
+    // A workout page where the user can freely select exercises and monitor their time
+   
     public sealed partial class CustomWorkout : Page
     {
+        //instance fields 
         private DispatcherTimer dispatcherTimer, timeDispatcher, demoDispatcher;
         private int timesTicked = 1;
         private double ProgressAmount = 0;
@@ -32,15 +30,20 @@ namespace FedtFitness.View
         private int min = 0;
         private int hour = 0;
 
+        //datetime instance
         private DateTime startedTime;
+        //timespan instances 
         private TimeSpan timePassed, timeSinceLastStop;
 
 
+        //constructor containing the InitializeComponent method defines
+        //what you see on the form (properties and controls) 
         public CustomWorkout()
         {
             this.InitializeComponent();
         }
 
+        // This is called when you start the timer
         bool isStop = false;
         private void Start_Click(object sender, RoutedEventArgs e)
         {
@@ -69,6 +72,9 @@ namespace FedtFitness.View
             base.OnNavigatedTo(e);
             ProgressControl.SetBarLength(1.0);
         }
+
+        //When you call this it sets up the circle timer by using the dispatcherTimer_Tick
+        // and the DemoDispatcher_Tick 
         private void DispatcherTimerSetup()
         {
             dispatcherTimer = new DispatcherTimer();
@@ -85,15 +91,23 @@ namespace FedtFitness.View
             demoDispatcher.Interval = new TimeSpan(0, 0, 0, 0, 1);
             demoDispatcher.Start();
         }
-        
 
+
+
+        // The txtSet.Text provides the view with time passed in between each workout 
         int setCount = 0;
         private void Set_Click(object sender, RoutedEventArgs e)
         {
+            isStop = true; 
+            startedTime = DateTime.Now;
+            ProgressControl.SetBarLength(0.0);
+            ProgressAmount = 0.0;
             setCount++;
-            txtSet.Text += "Set " + setCount + ": " + Hour.Text + "\n";
+            txtSet.Text += "Set: " +  setCount + "   Seconds: " + timePassed.Seconds +  "   Minutes: " + timePassed.Minutes + "\n";
         }
 
+
+        //This formats how the digit string should be displayed 
         private string MakeDigitString(int number, int count)
         {
             string result = "0";
@@ -118,6 +132,8 @@ namespace FedtFitness.View
             return result;
         }
         
+        //This contains the way that the Hour.Text that is displayed in the circle timer 
+        //it formats what should be displayed as well as in what order and with how many digits
         private void DemoDispatcher_Tick(object sender, object e)
         {
             timePassed = DateTime.Now - startedTime;
@@ -126,8 +142,8 @@ namespace FedtFitness.View
                 + MakeDigitString((timeSinceLastStop + timePassed).Seconds, 2);
         }
 
-
-
+        //This makes the circle timer reset when it reaches a full circle as well as as the timesTicked
+        //which is essentially how much time has passed in an instance
         private void dispatcherTimer_Tick(object sender, object e)
         {
             timesTicked++;

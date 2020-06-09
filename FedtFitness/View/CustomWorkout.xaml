@@ -138,7 +138,7 @@
         <Grid Grid.Row="2" Grid.Column="5">
             <Ellipse Stroke="Red" StrokeThickness="2" Width="202" Height="202" Margin="0 0 5 5"/>
             <local:CircleTimer x:Name="ProgressControl" Size="200" Color="MediumSpringGreen" LineWidth="6" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            <TextBlock Text="Total Time"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0 0 0 20" />
+            <TextBlock Text="Set Time"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0 0 0 20" />
             <TextBlock x:Name="Hour" Text="0:00:00"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0 20 0 0" />
            
 
