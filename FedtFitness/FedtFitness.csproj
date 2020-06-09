@@ -216,7 +216,8 @@
     <Content Include="Assets\9.jpg" />
     <Content Include="Assets\exercise.jpg" />
     <Content Include="Assets\fedtlogo.png" />
-    <Content Include="Assets\stopwatch.png" />
+    <Content Include="Assets\muscleperson.png" />
+    <Content Include="Assets\newstopwatch.png" />
     <Content Include="Assets\test.jpg" />
     <Content Include="Assets\workout.jpg" />
     <Content Include="Properties\Default.rd.xml" />

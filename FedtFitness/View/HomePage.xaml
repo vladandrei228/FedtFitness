@@ -35,8 +35,8 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Orientation="Vertical">
-            <Button Click="Workout_Click">
-                <Image Source="../Assets/exercise.jpg"
+            <Button Click="Workout_Click" CornerRadius="10">
+                <Image Source="../Assets/muscleperson.png"
                        Height="230"
 
                        HorizontalAlignment="Center"/>
@@ -46,11 +46,12 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Orientation="Vertical">
-            <Button Click="CustomWorkout_Click">
-                <Image Source="../Assets/stopwatch.png"
+            <Button Click="CustomWorkout_Click" CornerRadius="10">
+                <Image Source="../Assets/newstopwatch.png"
                        Height="230"
 
-                       HorizontalAlignment="Center"/>
+                       HorizontalAlignment="Center"
+                       />
             </Button>
 
         </StackPanel>
@@ -60,7 +61,7 @@
                     VerticalAlignment="Center"
                     Background="Black"
                     BorderBrush="Black" BorderThickness="24" CornerRadius="10">
-            <TextBlock Text="Regular Workout" TextWrapping="Wrap" TextAlignment="Center"
+            <TextBlock Text="Focused Workout" TextWrapping="Wrap" TextAlignment="Center"
                        FontSize="40"
                        Foreground="LightSkyBlue"
                        Padding="1"
@@ -86,7 +87,7 @@
                     Background="Black"
                     BorderBrush="Black" BorderThickness="24" CornerRadius="10"
                     >
-            <TextBlock Text="Timed Workout" TextWrapping="Wrap" TextAlignment="Center"
+            <TextBlock Text="Exercise Freely" TextWrapping="Wrap" TextAlignment="Center"
                        FontSize="40"
                        Foreground="LightSkyBlue"
                        Padding="1"/>
