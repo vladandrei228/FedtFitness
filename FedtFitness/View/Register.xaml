@@ -24,27 +24,111 @@
         </Style>
     </Page.Resources>
 
-
-
     <Grid>
         <Grid.Background>
-        <ImageBrush ImageSource="../Assets/workout.jpg" 
+            <ImageBrush ImageSource="../Assets/workout.jpg" 
                     Stretch="UniformToFill" 
                     Opacity="0.6"/>
-    </Grid.Background>
-    <StackPanel Orientation="Vertical"
+        </Grid.Background>
+
+
+
+        <Grid>
+            <Grid BorderBrush="Gray" BorderThickness="0.5" Height="330" Width="350" Margin="350,0,0,130">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="110"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.Background>
+                    <SolidColorBrush Color="#B8C5D6" Opacity="0.2"></SolidColorBrush>
+                </Grid.Background>
+
+                <StackPanel Grid.Row="0" Margin="1,1,0,0">
+                    <Image Source="../Assets/fedtlogo.png" Margin="0,10,0,0" Width="85"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBox
+                        Width="250"
+                        PlaceholderText="username"
+                        FontSize="23"
+                        Text="{Binding Username, Mode=TwoWay}"
+                    />
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <PasswordBox
+                        Width="250"
+                        PlaceholderText="password"
+                        FontSize="23"
+                        Password="{Binding Password, Mode=TwoWay}"
+                    />
+                </StackPanel>
+
+                <StackPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBox
+                        Width="250"
+                        PlaceholderText="e-mail"
+                        FontSize="23"
+                        Text="{Binding Email, Mode=TwoWay}"
+                    />
+                </StackPanel>
+
+                <StackPanel Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <Button Name="register" 
+                            Content="Register" 
+                            Width="250"
+                            FontSize="20"
+                            Style="{StaticResource ButtonStyle}"
+                            Command="{Binding AddUserCommand}"/>
+                </StackPanel>
+
+            </Grid>
+        </Grid>
+
+
+        <Grid  BorderBrush="Gray" BorderThickness="0.5" Width="350" Height="80" Margin="350,320,0,0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.Background>
+                <SolidColorBrush Color="#B8C5D6" Opacity="0.2"></SolidColorBrush>
+            </Grid.Background>
+
+            <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Text="Have an account?" Margin="0,5,0,0"></TextBlock>
+
+            <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Width="250"
+                    FontSize="20"
+                Content="Log in" 
+                    Style="{StaticResource ButtonStyle}"
+                    Click="Login_Click" />
+
+        </Grid>
+
+
+
+
+
+        <!--<StackPanel Orientation="Vertical"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center">
             <StackPanel Width="500" 
-                        Height="100">
-                <TextBlock
+                        Height="100">-->
+                <!--<TextBlock
                     HorizontalAlignment="Center" 
                     Text="Register" FontSize="50" 
                     Foreground="Brown" 
-                    FontWeight="ExtraBold"/>
-                
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" 
+                    FontWeight="ExtraBold"/>-->
+
+            <!--</StackPanel>-->
+            <!--<StackPanel Orientation="Horizontal" 
                         HorizontalAlignment="Left">
                 <TextBlock
                     Text="Username"
@@ -58,8 +142,8 @@
                     FontSize="25"
                     Text="{Binding Username, Mode=TwoWay}"
                     />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" 
+            </StackPanel>-->
+            <!--<StackPanel Orientation="Horizontal" 
                         HorizontalAlignment="Left">
                 <TextBlock
                     Text="Password"
@@ -73,11 +157,11 @@
                     PlaceholderText="Insert a Password.."
                     FontSize="25"
                     Password="{Binding Password, Mode=TwoWay}"
-                />
-            </StackPanel>
+                />-->
+            <!--</StackPanel>
             <StackPanel Orientation="Horizontal" 
-                        HorizontalAlignment="Left">
-                <TextBlock
+                        HorizontalAlignment="Left">-->
+                <!--<TextBlock
                     Text="E-mail"
                     FontSize="30"
                     Foreground="Black"
@@ -88,34 +172,19 @@
                     PlaceholderText="Insert an e-mail.."
                     FontSize="25"
                     Text="{Binding Email, Mode=TwoWay}"
-                    />
-            </StackPanel>
+                    />-->
+            <!--</StackPanel>
             <StackPanel Orientation="Horizontal" 
                         HorizontalAlignment="Center">
                 <Button Name="register" 
                     Content="Register" 
                     Style="{StaticResource ButtonStyle}"
                     Command="{Binding AddUserCommand}"/>
-            <Button Content="Login" 
+                <Button Content="Login" 
                     Style="{StaticResource ButtonStyle}"
                     Click="Login_Click" />
-            </StackPanel>
-        </StackPanel>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            </StackPanel>-->
+        
 
 
     </Grid>
