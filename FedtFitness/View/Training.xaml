@@ -150,12 +150,16 @@
                     HorizontalAlignment="Stretch">
             <TextBlock   HorizontalAlignment="Center" 
                          FontSize="24" FontWeight="Bold">
-                <Run Text="{Binding ProgressPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                <Run Text="{Binding ProgressPercentage, 
+                    UpdateSourceTrigger=PropertyChanged, 
+                    Mode=TwoWay}"/>
                 <Run Text="% Completed"/>
             </TextBlock>
             <ProgressBar Width="400"
                          Height="10"
-                         Value="{Binding ProgressPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                         Value="{Binding ProgressPercentage, 
+                UpdateSourceTrigger=PropertyChanged, 
+                Mode=TwoWay}" 
                          Margin="10,10,10,10"
                          Name="ProgressBar"/>
         </StackPanel>
