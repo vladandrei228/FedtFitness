@@ -182,7 +182,9 @@
                     Grid.Column="4" 
                     Grid.Row="3"
                     Orientation="Horizontal">
-            <Button Style="{StaticResource ButtonStyle}" 
+            <Button Click="CompleteWorkout_Click"
+                    IsEnabled="{Binding CompleteWorkoutVisibility, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
+                    Style="{StaticResource ButtonStyle}" 
                     Background="#B8C5D6"
                     Opacity="0.8"
                     Content="Complete workout">

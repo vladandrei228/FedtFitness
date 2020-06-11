@@ -32,6 +32,7 @@ namespace FedtFitness.ViewModel
 
             StartWorkoutVisibility = "false";
             MarkAsDoneVisibility = "true";
+            CompleteWorkoutVisibility = "false";
         }
 
 
@@ -75,7 +76,8 @@ namespace FedtFitness.ViewModel
                 }
             }
 
-            MarkAsDoneVisibility = "false";
+            //MarkAsDoneVisibility = "false";
+            ToggleMarkAsDoneButton_OnSelectedExercise();
             OnPropertyChanged(nameof(MarkAsDoneVisibility));
             OnPropertyChanged(nameof(ProgressPercentage));
         }
@@ -85,39 +87,58 @@ namespace FedtFitness.ViewModel
         public void ToggleMarkAsDoneButton_OnSelectedExercise()
         {
             if (ExerciseCatalogSingleton.TrainingExcercises == null)
-            {
                 MarkAsDoneVisibility = "false";
-            }
 
             else
-            {
-               
-           
-            for (int i = 0; i < ExerciseCatalogSingleton.TrainingExcercises.Count; i++)
-            {
-                if (ExerciseCatalogSingleton.TrainingExcercises.Count == 0)
-                {
-                    MarkAsDoneVisibility = "false";
-                }
-
-                else
-                {
-                    if (ExerciseCatalogSingleton.TrainingExcercises[i].Excercise_ID == SelectedExercise.Excercise_ID)
+                for (var i = 0; i < ExerciseCatalogSingleton.TrainingExcercises.Count; i++)
+                    if (ExerciseCatalogSingleton.TrainingExcercises.Count == 0|| SelectedExercise==null)
                     {
-                        if (ExerciseCatalogSingleton.FinishedTrainingExercises[i])
-                            MarkAsDoneVisibility = "false";
-                        else
-                            MarkAsDoneVisibility = "true";
-                        break;
+                        MarkAsDoneVisibility = "false";
                     }
-                }
 
-            }
-            }
+                    else
+                    {
+                        if (ExerciseCatalogSingleton.TrainingExcercises[i].Excercise_ID ==
+                            SelectedExercise.Excercise_ID)
+                        {
+                            if (ExerciseCatalogSingleton.FinishedTrainingExercises[i])
+                                MarkAsDoneVisibility = "false";
+                            else
+                                MarkAsDoneVisibility = "true";
+                            break;
+                        }
+                    }
 
             OnPropertyChanged(nameof(MarkAsDoneVisibility));
             OnPropertyChanged(nameof(ProgressPercentage));
         }
+
+
+        
+        public string CompleteWorkoutVisibility { get; set; }
+        // Method that checks if Mark as Complete Workout button must be either enabled or disabled
+        public void ToggleCompleteWorkoutButton()
+        {
+            if (ProgressPercentage==100.0m)
+            {
+                CompleteWorkoutVisibility = "true";
+            }
+
+            //for (int i = 0; i < ExerciseCatalogSingleton.FinishedTrainingExercises.Count; i++)
+            //{
+            //    if (ExerciseCatalogSingleton.FinishedTrainingExercises[i] == true)
+            //    {
+            //        CompleteWorkoutVisibility = "true";
+            //        break;
+            //    }
+            //}
+
+            //CompleteWorkoutVisibility = "false";
+            OnPropertyChanged(nameof(CompleteWorkoutVisibility));
+            }
+
+
+
 
         //EQUIPMENT
 
@@ -237,6 +258,8 @@ namespace FedtFitness.ViewModel
                 ExerciseCatalogSingleton.SelectedExercise = value;
                 OnPropertyChanged(nameof(SelectedExercise));
                 ToggleMarkAsDoneButton_OnSelectedExercise();
+                OnPropertyChanged(nameof(CompleteWorkoutVisibility));
+                ToggleCompleteWorkoutButton();
             }
         }
 

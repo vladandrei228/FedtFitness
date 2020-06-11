@@ -31,9 +31,17 @@ namespace FedtFitness.View
         {
             this.InitializeComponent();
         }
+
         private void MarkAsDone_Click(object sender, RoutedEventArgs e)
         {
             fvm.ToggleMarkAsDoneButton_OnMarkAsDoneClicked();
         }
+
+        private void CompleteWorkout_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(HamburgerMenu), e);
+        }
+
+
     }
 }
