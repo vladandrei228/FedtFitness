@@ -120,8 +120,7 @@
                            FontSize="24"
                            FontWeight="Bold">
                     <Run Text="{Binding SelectedExercise.ExName}"/>
-                    <Run Text="Details"/>
-                </TextBlock>
+                    </TextBlock>
                 
                 <StackPanel Orientation="Horizontal" 
                             Margin="20,20,20,20">
